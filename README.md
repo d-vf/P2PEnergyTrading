@@ -27,6 +27,8 @@ Paper submitted and accepted to the 15th IEEE International Conference on Smart 
    * clusters solar, residential and commercial profiles, simulation
   
 3. P2P_24_hour__block_LP_DC_aprox.ipynb (being updated)
+
+4. R plots: https://github.com/nc2y/P2PEnergyTrading/tree/main/data
    
     def`update_network_for_hour`
        Function to update the network for a specific hour
