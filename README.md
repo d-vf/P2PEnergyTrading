@@ -2,9 +2,9 @@
 
  ![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/bids_bus_R.jpg)
 
-"Peer-to-Peer (P2P) Electricity Markets for Low Voltage Networks" (insert citation)
+This repository contains the code and data files for the article "Peer-to-Peer (P2P) Electricity Markets for Low Voltage Networks" by Diana Vieira Fernandes, Nicolas Christin, and Soummya Kar.
 
-Abstract:
+Paper submitted and accepted to the 15th IEEE International Conference on Smart Grid Communications ([SmartGridComm 2024](https://sgc2024.ieee-smartgridcomm.org/about))
 
   
 
