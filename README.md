@@ -1,6 +1,6 @@
 # P2PEnergyTrading
 
-![Methods](https://github.com/nc2y/P2PEnergyTrading/blob/main/implementation/bids_bus_R.jpg) 
+![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/implementation/bids_bus_R.jpg) 
 
 ## Explain Simulation
 
