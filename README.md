@@ -1,4 +1,4 @@
-# P2PEnergyTrading
+# P2P Energy Trading
 
  ![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/bids_bus_R.jpg)
 
