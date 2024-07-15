@@ -1,6 +1,13 @@
 # P2PEnergyTrading
 
-![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/implementation/bids_bus_R.jpg) 
+ ![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/bids_bus_R.jpg)
+
+"Peer-to-Peer (P2P) Electricity Markets for Low Voltage Networks" (insert citation)
+
+Abstract:
+
+  
+
 
 ## Explain Simulation
 
