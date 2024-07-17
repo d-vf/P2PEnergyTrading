@@ -40,7 +40,10 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
 ### network
 
-* CIGRE low voltage radial distribution network (44 bus system) and 
+* CIGRE low voltage radial distribution network (44 bus system)
+
+   ![44 Bus network](https://github.com/d-vf/P2PEnergyTrading/blob/main/44_network.png) 
+
 * Synthetic Voltage Control LV Networks ``Village'' (80 bus system)
 
 
