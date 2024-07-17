@@ -7,14 +7,28 @@ This repository contains the code and data files for the article "Peer-to-Peer (
 Paper submitted and accepted to the 15th IEEE International Conference on Smart Grid Communications ([SmartGridComm 2024](https://sgc2024.ieee-smartgridcomm.org/about))
 
   
+## Simulation
 
+##Data
 
-## Explain Simulation
+* loads (NREL)
+* generation (Solar Atlas)
+* network
 
-* loads
+ ## Allocation
+ buses
+ YBUS
+ PF
+
+Trading pairs
+  
 * matching (double auction)
 
-## Explain actual optimization
+  * 24 time block
+
+## optimization
+
+
 
 ## Metrics
 
