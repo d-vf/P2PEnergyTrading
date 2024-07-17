@@ -9,7 +9,7 @@ Paper submitted and accepted to the 15th IEEE International Conference on Smart 
   
 ## Simulation
 
-##Data
+## Data
 
 * loads (NREL)
 * generation (Solar Atlas)
@@ -34,15 +34,17 @@ Trading pairs
 
 # List:
 
-1. single_timestep_LP_ DC_aprox.ipynb
+1. Demand and supply simulation 09_23.ipynb
+   * clusters solar, residential and commercial profiles, simulation
+
+2. single_timestep_LP_ DC_aprox.ipynb
    * single timestep LP DC approximation for testing purposes
 
-2. Demand and supply simulation 09_23.ipynb
-   * clusters solar, residential and commercial profiles, simulation
-  
-3. P2P_24_hour__block_LP_DC_aprox.ipynb (being updated)
+3. P2P_24_hour__block_LP_DC_aprox.ipynb
 
 4. R plots: https://github.com/nc2y/P2PEnergyTrading/tree/main/data
+
+## Functions
    
     def`update_network_for_hour`
        Function to update the network for a specific hour
@@ -52,7 +54,7 @@ Trading pairs
         matching for each hour block
     
      def `correct_baseline`
-    Correcting baseline function (it is PF of everyone + whatever P2P) Network state without P2P
+    Correcting baseline function (PF all nodes (Grid) +  P2P) -> Network state without P2P effect
     
     def `run_optimization`
     Function to run optimization for a specific hour (takes, network state for each hour and matches for that hour from previous def)
