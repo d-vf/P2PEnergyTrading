@@ -11,9 +11,38 @@ Paper submitted and accepted to the 15th IEEE International Conference on Smart 
 
 ## Data
 
-* loads (NREL)
-* generation (Solar Atlas)
-* network
+Build a baseline to compare trading and not trading
+
+Baseline = loads are fulfilled by retailer, so this is demand
+
+###  Loads (NREL)
+
+typical load profiles (households, commercial)
+
+NREL: https://www.nrel.gov/buildings/end-use-load-profiles.html
+Demand: (End Use Load Profiles for the U.S. Building Stock) https://data.openei.org/submissions/4520 (PA, ISO, PJM aggregate TS)
+National Renewable Energy Laboratory (NREL). (2021). End-Use Load Profiles for the U.S. Building Stock [data set]. Retrieved from https://dx.doi.org/10.25984/1876417.
+
+https://data.openei.org/s3_viewer?bucket=oedi-data-lake&prefix=nrel-pds-building-stock%2Fend-use-load-profiles-for-us-building-stock%2F2023%2Fcomstock_amy2018_release_1%2Ftimeseries_aggregates%2Fby_iso_rto_region%2Fupgrade%3D0%2Fiso_rto_region%3DPJM%2F
+
+oedi-data-lakenrel-pds-building-stockend-use-load-profiles-for-us-building-stock2023comstock_amy2018_release_1timeseries_aggregatesby_iso_rto_regionupgrade%3D0iso_rto_region%3DPJM
+
+### Generation (Solar Atlas)
+Supply (do 10, 30 and 50 of buses)
+
+Solar https://globalsolaratlas.info/map (assuming 3kwp)
+
+Other:
+
+https://www.nrel.gov/grid/solar-resource/renewable-resource-data.html
+
+https://nrel.github.io/PyDSS/Extended%20controls%20library.html
+
+### network
+
+* CIGRE low voltage radial distribution network (44 bus system) and 
+* Synthetic Voltage Control LV Networks ``Village'' (80 bus system)
+
 
  ## Allocation
  buses
