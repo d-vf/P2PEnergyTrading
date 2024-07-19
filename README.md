@@ -54,6 +54,15 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
 Notebook: Demand and supply simulation 09_23.ipynb
    * clusters solar, residential and commercial profiles, simulation
+
+### Functions
+   
+    def`update_network_for_hour`
+       Function to update the network for a specific hour
+       this generates the simulation for each hour to do the matching, all nets are a list with network data for each hour
+    
+     def `correct_baseline`
+    Correcting baseline function (PF all nodes (Grid) +  P2P) -> Network state without P2P effect
      
 # Trading pairs
  
@@ -108,13 +117,6 @@ A. single_timestep_LP_ DC_aprox.ipynb
 B. P2P_24_hour__block_LP_DC_aprox.ipynb
 
 ### Functions
-   
-    def`update_network_for_hour`
-       Function to update the network for a specific hour
-       this generates the simulation for each hour to do the matching, all nets are a list with network data for each hour
-    
-     def `correct_baseline`
-    Correcting baseline function (PF all nodes (Grid) +  P2P) -> Network state without P2P effect
     
     def `run_optimization`
     Function to run optimization for a specific hour (takes, network state for each hour and matches for that hour from previous def)
