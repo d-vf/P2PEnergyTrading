@@ -56,7 +56,44 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 Trading pairs
  
 * matching (double auction)
-* 24 time block
+
+\subsection{Matching process}
+The double auction mechanism is used to incorporate real-world constraints on both the demand and supply sides, whereas $D$ be the set of buy orders and $S$ be the set of sell orders in a P2P market:
+\begin{itemize}
+  \item Buy orders: $D = \{ (d_1, p^d_1, q^d_1), \ldots, (d_n, d^b_n, d^b_n) \}$ where each tuple represents a buy order with identifier $d_i$, a willing-to-pay price $p^d_i$, and a desired quantity $q^d_i$.
+  \item Sell orders: $S = \{ (s_1, p^s_1, q^s_1), \ldots, (s_m, p^s_m, q^s_m) \}$ where each tuple represents a sell order with identifier $s_i$, an asking price $p^s_i$, and an available quantity $q^s_i$.
+\end{itemize}
+The quantities on each are adjusted at each bus $i$, ${g}_i$ (generation at bus $i$) $\equiv q^s_i$ and adjusted load at bus $i: {\rho}_i \equiv q^d_i$ (or that seller cannot sell more than ${g}_i$ and inversely, the buyer cannot buy more than ${\rho}_i$.
+The matching process is described in Algorithm~\ref{alg:Matching_algo}.
+\begin{algorithm}
+\caption{Market Matching Algorithm}
+\label{alg:Matching_algo}
+\begin{algorithmic}[1]\small
+\State $D \gets \text{set of buy orders } \{(d_1,p^d_1,q^d_1),\ldots,(d_n,p^d_n,q^d_n)\}$
+\State $S \gets \text{set of sell orders } \{(s_1,p^s_1,q^s_1),\ldots,(s_m,p^s_m,q^s_m)\}$
+\State $T \gets \emptyset$ \Comment{initialize matches}
+\State Sort $D$ by increasing $p^d$
+\State Sort $S$ by decreasing $p^s$
+\For{each buy order $(d_i,p^d_i,q^d_i)$ in $D$}
+    \If{$q^d_i=0$}
+        \State \textbf{continue}
+    \EndIf
+    \For{each sell order $(s_j,p^s_j,q^s_j)$ in $S$}
+        \If{$q^s_j>0$ and $p^d_i\geq p^s_j$}
+            \State $q^m_{ij} \gets \min(q^d_i,q^s_j)$
+            \State $t \gets (s_j,d_i,q^m_{ij})$ \Comment{form trade tuple}
+            \State Add $t$ to $T$
+            \State $q^d_i \gets q^d_i-q^m_{ij}$
+            \State $q^s_j \gets q^s_j-q^m_{ij}$
+            \If{$q^d_i=0$}
+                \State \textbf{break}
+            \EndIf
+        \EndIf
+    \EndFor
+\EndFor
+\State $Q_{\text{total}} \gets \sum_{t\in T} q^m_{ij}$ \Comment{Calculate total matched quantity}
+\end{algorithmic}
+\end{algorithm}
     
 
 Notebook: Demand and supply simulation 09_23.ipynb
