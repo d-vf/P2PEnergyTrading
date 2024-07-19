@@ -52,52 +52,42 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 * 
   <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/80_network.png" alt="network_80" width="50%">
 
-
-Trading pairs
- 
-* matching (double auction)
-
-\subsection{Matching process}
-The double auction mechanism is used to incorporate real-world constraints on both the demand and supply sides, whereas $D$ be the set of buy orders and $S$ be the set of sell orders in a P2P market:
-\begin{itemize}
-  \item Buy orders: $D = \{ (d_1, p^d_1, q^d_1), \ldots, (d_n, d^b_n, d^b_n) \}$ where each tuple represents a buy order with identifier $d_i$, a willing-to-pay price $p^d_i$, and a desired quantity $q^d_i$.
-  \item Sell orders: $S = \{ (s_1, p^s_1, q^s_1), \ldots, (s_m, p^s_m, q^s_m) \}$ where each tuple represents a sell order with identifier $s_i$, an asking price $p^s_i$, and an available quantity $q^s_i$.
-\end{itemize}
-The quantities on each are adjusted at each bus $i$, ${g}_i$ (generation at bus $i$) $\equiv q^s_i$ and adjusted load at bus $i: {\rho}_i \equiv q^d_i$ (or that seller cannot sell more than ${g}_i$ and inversely, the buyer cannot buy more than ${\rho}_i$.
-The matching process is described in Algorithm~\ref{alg:Matching_algo}.
-\begin{algorithm}
-\caption{Market Matching Algorithm}
-\label{alg:Matching_algo}
-\begin{algorithmic}[1]\small
-\State $D \gets \text{set of buy orders } \{(d_1,p^d_1,q^d_1),\ldots,(d_n,p^d_n,q^d_n)\}$
-\State $S \gets \text{set of sell orders } \{(s_1,p^s_1,q^s_1),\ldots,(s_m,p^s_m,q^s_m)\}$
-\State $T \gets \emptyset$ \Comment{initialize matches}
-\State Sort $D$ by increasing $p^d$
-\State Sort $S$ by decreasing $p^s$
-\For{each buy order $(d_i,p^d_i,q^d_i)$ in $D$}
-    \If{$q^d_i=0$}
-        \State \textbf{continue}
-    \EndIf
-    \For{each sell order $(s_j,p^s_j,q^s_j)$ in $S$}
-        \If{$q^s_j>0$ and $p^d_i\geq p^s_j$}
-            \State $q^m_{ij} \gets \min(q^d_i,q^s_j)$
-            \State $t \gets (s_j,d_i,q^m_{ij})$ \Comment{form trade tuple}
-            \State Add $t$ to $T$
-            \State $q^d_i \gets q^d_i-q^m_{ij}$
-            \State $q^s_j \gets q^s_j-q^m_{ij}$
-            \If{$q^d_i=0$}
-                \State \textbf{break}
-            \EndIf
-        \EndIf
-    \EndFor
-\EndFor
-\State $Q_{\text{total}} \gets \sum_{t\in T} q^m_{ij}$ \Comment{Calculate total matched quantity}
-\end{algorithmic}
-\end{algorithm}
-    
-
 Notebook: Demand and supply simulation 09_23.ipynb
    * clusters solar, residential and commercial profiles, simulation
+     
+# Trading pairs
+ 
+ ## Matching process (double auction)
+The double auction mechanism is used to incorporate real-world constraints on both the demand and supply sides, whereas $D$ be the set of buy orders and $S$ be the set of sell orders in a P2P market:
+
+* Buy orders: $D = \{ (d_1, p^d_1, q^d_1), \ldots, (d_n, d^b_n, d^b_n) \}$ where each tuple represents a buy order with identifier $d_i$, a willing-to-pay price $p^d_i$, and a desired quantity $q^d_i$.
+* Sell orders: $S = \{ (s_1, p^s_1, q^s_1), \ldots, (s_m, p^s_m, q^s_m) \}$ where each tuple represents a sell order with identifier $s_i$, an asking price $p^s_i$, and an available quantity $q^s_i$.
+
+The quantities on each are adjusted at each bus $i$, ${g}_i$ (generation at bus $i$) $\equiv q^s_i$ and adjusted load at bus $i: {\rho}_i \equiv q^d_i$ (or that seller cannot sell more than ${g}_i$ and inversely, the buyer cannot buy more than ${\rho}_i$.
+
+The matching process is described in the Algorithm "Matching_algo".
+
+1.  D ← set of buy orders { (d1, p^d1, q^d1), ..., (d_n, p^d_n, q^d_n) }
+2.  S ← set of sell orders { (s_1, p^s_1, q^s_1), ..., (s_m, p^s_m, q^s_m) }
+3.  T ← ∅  // initialize matches
+4.  Sort D by increasing p^d
+5.  Sort S by decreasing p^s
+6.  for each buy order (d_i, p^d_i, q^d_i) in D:
+7.      if q^d_i = 0:
+8.          continue
+9.      for each sell order (s_j, p^s_j, q^s_j) in S:
+10.         if q^s_j > 0 and p^d_i ≥ p^s_j:
+11.             q^m_ij ← min(q^d_i, q^s_j)
+12.             t ← (s_j, d_i, q^m_ij)  // form trade tuple
+13.             Add t to T
+14.             q^d_i ← q^d_i - q^m_ij
+15.             q^s_j ← q^s_j - q^m_ij
+16.             if q^d_i = 0:
+17.                 break
+18. Q_total ← Σ_{t ∈ T} q^m_ij  // Calculate total matched quantity
+
+
+A trade $t \in T$ is represented as $t = (s_t, d_t, q_t)$ where $s_t$ is the seller (source, matching $s_i$ in sell orders), $d_t$ is the buyer (destination, matching $d_i$ in buy orders), and $q_t$ is the quantity of the trade $t$. This ordering scheme simulates an optimal matching: the highest willing buyer is paired with the lowest willing seller. Each user's bid is capped by their respective load for the given time frame, while each ask is constrained by the available local generation. This ensures that the trading process accurately reflects the physical limitations of the energy system. 
      
 ## optimization
 
