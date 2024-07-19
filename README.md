@@ -48,6 +48,8 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
   ![44 Bus network](https://github.com/d-vf/P2PEnergyTrading/blob/main/44_network.png)
 
   ![] (https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/44_network.png | width=10 )
+  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/44_network.png" alt="network" width="10%">
+
 
 
 * Synthetic Voltage Control LV Networks ``Village'' (80 bus system)
