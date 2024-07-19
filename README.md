@@ -8,33 +8,28 @@ Paper submitted and accepted to the 15th IEEE International Conference on Smart 
 
 ## Libraries
 
-pandapower
-
-L. Thurner, A. Scheidler, F. Schäfer et al, pandapower - an Open Source Python Tool for Convenient Modeling, Analysis and Optimization of Electric Power Systems, in IEEE Transactions on Power Systems, vol. 33, no. 6, pp. 6510-6521, Nov. 2018.
+#### pandapower
 
 ```
 pip install pandapower
 ```
-gurobipy (Gurobi Python API*)
+L. Thurner, A. Scheidler, F. Schäfer et al, pandapower - an Open Source Python Tool for Convenient Modeling, Analysis and Optimization of Electric Power Systems, in IEEE Transactions on Power Systems, vol. 33, no. 6, pp. 6510-6521, Nov. 2018.
+
+#### gurobipy (Gurobi Python API*)
 
 
 ```
 pip install gurobipy
 ```
 
-Gurobi Optimization Inc., Gurobi Optimizer, 2024 https://www.gurobi.com)
+Gurobi Optimization Inc., Gurobi Optimizer, 2024 (https://www.gurobi.com)
 
 * https://pypi.org/project/gurobipy/
 
 
-guroby
 ## Simulation
 
 ## Data
-
-Build a baseline to compare trading and not trading
-
-Baseline = loads are fulfilled by retailer, so this is demand
 
 ###  Loads (NREL)
 
@@ -51,6 +46,7 @@ oedi-data-lakenrel-pds-building-stockend-use-load-profiles-for-us-building-stock
   ![residencial cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/residential_cluster.png) 
 
 ### Generation (Solar Atlas)
+
 Supply (do 10, 30 and 50 of buses)
 
 Solar https://globalsolaratlas.info/map (assuming 3kwp)
