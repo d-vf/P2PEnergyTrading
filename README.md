@@ -6,7 +6,28 @@ This repository contains the code and data files for the article "Peer-to-Peer (
 
 Paper submitted and accepted to the 15th IEEE International Conference on Smart Grid Communications ([SmartGridComm 2024](https://sgc2024.ieee-smartgridcomm.org/about))
 
-  
+## Libraries
+
+pandapower
+
+L. Thurner, A. Scheidler, F. Schäfer et al, pandapower - an Open Source Python Tool for Convenient Modeling, Analysis and Optimization of Electric Power Systems, in IEEE Transactions on Power Systems, vol. 33, no. 6, pp. 6510-6521, Nov. 2018.
+
+```
+pip install pandapower
+```
+gurobipy (Gurobi Python API*)
+
+
+```
+pip install gurobipy
+```
+
+Gurobi Optimization Inc., Gurobi Optimizer, 2024 https://www.gurobi.com)
+
+* https://pypi.org/project/gurobipy/
+
+
+guroby
 ## Simulation
 
 ## Data
