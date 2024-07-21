@@ -68,20 +68,11 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
 * Synthetic Voltage Control LV Networks ``Village'' (80 bus system)
 
-  
+
   <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/80_network.png" alt="network_80" width="50%">
 
 Notebook: Demand and supply simulation 09_23.ipynb
    * clusters solar, residential and commercial profiles, simulation
-
-### Functions
-   
-    def`update_network_for_hour`
-       Function to update the network for a specific hour
-       this generates the simulation for each hour to do the matching, all nets are a list with network data for each hour
-    
-     def `correct_baseline`
-    Correcting baseline function (PF all nodes (Grid) +  P2P) -> Network state without P2P effect
      
 # Trading pairs
  
@@ -122,24 +113,82 @@ The matching process is described in the Algorithm "Matching_algo".
 
 A trade $t \in T$ is represented as $t = (s_t, d_t, q_t)$ where $s_t$ is the seller (source, matching $s_i$ in sell orders), $d_t$ is the buyer (destination, matching $d_i$ in buy orders), and $q_t$ is the quantity of the trade $t$. This ordering scheme simulates an optimal matching: the highest willing buyer is paired with the lowest willing seller. Each user's bid is capped by their respective load for the given time frame, while each ask is constrained by the available local generation. This ensures that the trading process accurately reflects the physical limitations of the energy system. 
 
-#### Functions
-    def `match_orders`
-        matching for each hour block
-     
-## optimization
+### `match_orders`
 
-Notebook:
+```python
+def match_orders(net):
+    """
+    Function to match buy and sell orders for each hour block.
+
+    Parameters:
+    net (dict): Network state containing load and generation data.
+
+    Returns:
+    tuple: Two lists containing matches for buyers and sellers.
+    """
+
+```
+     
+### `update_network_for_hour`
+
+```python
+def update_network_for_hour(hour, nets):
+    """
+    Function to update the network for a specific hour.
+
+    Parameters:
+    hour (int): The hour for which the network needs to be updated.
+    nets (list): A list containing network data for each hour.
+
+    Returns:
+    net (dict): Updated network state for the specified hour.
+    """
+```
+
+### `def correct_baseline`
+
+```python
+def correct_baseline(network):
+    """
+    Function to correct the baseline (Power Flow for all nodes in the grid and P2P) to get the network state without P2P effect.
+
+    Parameters:
+    network (dict): The current network state.
+
+    Returns:
+    corrected_network (dict): Network state after correcting for P2P effects.
+    """
+```
+  
+### `run_optimization`
+    
+```python
+def run_optimization(net, B, adj_matrix, matches_hour):
+    """
+    Function to run optimization for a specific hour.
+    
+    Parameters:
+    net (object): Network state for the specific hour.
+    B (matrix): Susceptance matrix.
+    adj_matrix (matrix): Adjacency matrix of the network.
+    matches_hour (list): Matches for the hour from the previous matching function.
+
+    Returns:
+    results: The optimization results for the given hour.
+    """
+```
+
+## Notebooks:
 
 A. single_timestep_LP_ DC_aprox.ipynb
-   * single timestep LP DC approximation for testing purposes
+
+   * Description: Contains a single timestep Linear Programming (LP) DC approximation for testing purposes.
+
 
 B. P2P_24_hour__block_LP_DC_aprox.ipynb
 
-### Functions
-    
-    def `run_optimization`
-    Function to run optimization for a specific hour (takes, network state for each hour and matches for that hour from previous def)
-    (net, B, adj_matrix, matches_hour)
+   * Description: Handles the optimization process for a 24-hour block using the LP DC approximation method.
+     
+### Other
 
-### Other 
-4. R plots: https://github.com/nc2y/P2PEnergyTrading/tree/main/data
+4. R (ggplot2) plots: [here](implementation/README.md)
