@@ -43,7 +43,7 @@ https://data.openei.org/s3_viewer?bucket=oedi-data-lake&prefix=nrel-pds-building
 
 oedi-data-lakenrel-pds-building-stockend-use-load-profiles-for-us-building-stock2023comstock_amy2018_release_1timeseries_aggregatesby_iso_rto_regionupgrade%3D0iso_rto_region%3DPJM
 
-  ![residencial cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/residential_cluster.png) 
+  ![residencial cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/residential_cluster.png) 
 
 ### Generation (Solar Atlas)
 
@@ -51,7 +51,7 @@ Supply (do 10, 30 and 50 of buses)
 
 Solar https://globalsolaratlas.info/map (assuming 3kwp)
 
-  ![solar cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/solar_cluster.png) 
+  ![solar cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/solar_cluster.png) 
 
 Other:
 
@@ -62,12 +62,14 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 ### network
 
 * CIGRE low voltage radial distribution network (44 bus system)
-* 
-  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/44_network.png" alt="network_44" width="50%">
+  
+  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/44_network.png" alt="network_44" width="50%">
+
 
 * Synthetic Voltage Control LV Networks ``Village'' (80 bus system)
-* 
-  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/80_network.png" alt="network_80" width="50%">
+
+  
+  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/80_network.png" alt="network_80" width="50%">
 
 Notebook: Demand and supply simulation 09_23.ipynb
    * clusters solar, residential and commercial profiles, simulation
