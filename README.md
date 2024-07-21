@@ -70,9 +70,8 @@ Solar https://globalsolaratlas.info/map (assuming 3kWp)
 
 Other:
 
-https://www.nrel.gov/grid/solar-resource/renewable-resource-data.html
+NREL [Solar Integration Data and Tools](https://www.nrel.gov/grid/solar-resource/renewable-resource-data.html)
 
-https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
 #### Network
 
