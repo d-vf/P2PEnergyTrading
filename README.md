@@ -8,6 +8,16 @@ Paper submitted and accepted to the 15th IEEE International Conference on Smart 
 
 ## Libraries
 
+#### K-means clustering (loads)
+
+```
+pip install sklearn
+```
+
+Scikit-learn documentation: "2.3.2. K-means" - https://scikit-learn.org/stable/modules/clustering.html#k-means
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#
+
 #### pandapower
 
 ```
@@ -16,7 +26,6 @@ pip install pandapower
 L. Thurner, A. Scheidler, F. Schäfer et al, pandapower - an Open Source Python Tool for Convenient Modeling, Analysis and Optimization of Electric Power Systems, in IEEE Transactions on Power Systems, vol. 33, no. 6, pp. 6510-6521, Nov. 2018.
 
 #### gurobipy (Gurobi Python API*)
-
 
 ```
 pip install gurobipy
@@ -29,9 +38,9 @@ Gurobi Optimization Inc., Gurobi Optimizer, 2024 (https://www.gurobi.com)
 
 ## Simulation
 
-## Data
+### Data
 
-###  Loads (NREL)
+####  Loads (NREL)
 
 typical load profiles (households, commercial)
 
@@ -45,7 +54,7 @@ oedi-data-lakenrel-pds-building-stockend-use-load-profiles-for-us-building-stock
 
   ![residencial cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/residential_cluster.png) 
 
-### Generation (Solar Atlas)
+#### Generation (Solar Atlas)
 
 Supply (do 10, 30 and 50 of buses)
 
@@ -59,7 +68,7 @@ https://www.nrel.gov/grid/solar-resource/renewable-resource-data.html
 
 https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
-### network
+#### network
 
 * CIGRE low voltage radial distribution network (44 bus system)
   
@@ -70,13 +79,10 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
 
   <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/80_network.png" alt="network_80" width="50%">
-
-Notebook: Demand and supply simulation 09_23.ipynb
-   * clusters solar, residential and commercial profiles, simulation
      
-# Trading pairs
+## Trading pairs
  
- ## Matching process (double auction)
+### Matching process (double auction)
 The double auction mechanism is used to incorporate real-world constraints on both the demand and supply sides, whereas $D$ be the set of buy orders and $S$ be the set of sell orders in a P2P market:
 
 * Buy orders: $D = \{ (d_1, p^d_1, q^d_1), \ldots, (d_n, d^b_n, d^b_n) \}$ where each tuple represents a buy order with identifier $d_i$, a willing-to-pay price $p^d_i$, and a desired quantity $q^d_i$.
@@ -113,7 +119,7 @@ The matching process is described in the Algorithm "Matching_algo".
 
 A trade $t \in T$ is represented as $t = (s_t, d_t, q_t)$ where $s_t$ is the seller (source, matching $s_i$ in sell orders), $d_t$ is the buyer (destination, matching $d_i$ in buy orders), and $q_t$ is the quantity of the trade $t$. This ordering scheme simulates an optimal matching: the highest willing buyer is paired with the lowest willing seller. Each user's bid is capped by their respective load for the given time frame, while each ask is constrained by the available local generation. This ensures that the trading process accurately reflects the physical limitations of the energy system. 
 
-### `match_orders`
+#### `match_orders`
 
 ```python
 def match_orders(net):
@@ -129,7 +135,7 @@ def match_orders(net):
 
 ```
      
-### `update_network_for_hour`
+#### `update_network_for_hour`
 
 ```python
 def update_network_for_hour(hour, nets):
@@ -145,7 +151,7 @@ def update_network_for_hour(hour, nets):
     """
 ```
 
-### `correct_baseline`
+#### `correct_baseline`
 
 ```python
 def correct_baseline(network):
@@ -160,7 +166,7 @@ def correct_baseline(network):
     """
 ```
   
-### `run_optimization`
+#### `run_optimization`
     
 ```python
 def run_optimization(net, B, adj_matrix, matches_hour):
@@ -178,14 +184,19 @@ def run_optimization(net, B, adj_matrix, matches_hour):
     """
 ```
 
-## Notebooks:
+## [Notebooks](implementation/)
 
-A. single_timestep_LP_ DC_aprox.ipynb
+A. Demand and supply simulation 09_23.ipynb
+
+ * Description:  Simulates demand and supply patterns (using K-means clustering) for solar, residential, and commercial profiles.
+
+
+B. single_timestep_LP_ DC_aprox.ipynb
 
    * Description: Contains a single timestep Linear Programming (LP) DC approximation for testing purposes.
 
 
-B. P2P_24_hour__block_LP_DC_aprox.ipynb
+C. P2P_24_hour__block_LP_DC_aprox.ipynb
 
    * Description: Handles the optimization process for a 24-hour block using the LP DC approximation method.
      
