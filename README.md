@@ -145,7 +145,7 @@ def update_network_for_hour(hour, nets):
     """
 ```
 
-### `def correct_baseline`
+### `correct_baseline`
 
 ```python
 def correct_baseline(network):
