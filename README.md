@@ -81,13 +81,13 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
   <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/44_network.png" alt="network_44" width="50%">
 
 
-* Synthetic Voltage Control LV Networks ``Village'' (80 bus system)
+* Synthetic Voltage Control LV Networks ''Village'' (80 bus system)
 
 
   <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/80_network.png" alt="network_80" width="50%">
      
  
-### Matching process (double auction)
+### Matching process (double auction) | Trade generation
 
 The double auction mechanism is used to incorporate real-world constraints on both the demand and supply sides, whereas $D$ be the set of buy orders and $S$ be the set of sell orders in a P2P market:
 
