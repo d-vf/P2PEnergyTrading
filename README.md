@@ -45,7 +45,7 @@ Gurobi Optimization Inc., Gurobi Optimizer, 2024 (https://www.gurobi.com)
 
 ####  Loads (NREL)
 
-typical load profiles (households, commercial)
+Typical load profiles (households, commercial)
 
 NREL: https://www.nrel.gov/buildings/end-use-load-profiles.html
 
@@ -53,19 +53,20 @@ Demand: (End Use Load Profiles for the U.S. Building Stock) https://data.openei.
 National Renewable Energy Laboratory (NREL). (2021). End-Use Load Profiles for the U.S. Building Stock [data set]. Retrieved from https://dx.doi.org/10.25984/1876417.
 
 
+[Residential | ResStock]: 
+(https://data.openei.org/s3_viewer?bucket=oedi-data-lake&prefix=nrel-pds-building-stock%2Fend-use-load-profiles-for-us-building-stock%2F2023%2Fcomstock_amy2018_release_1%2Ftimeseries_aggregates%2Fby_iso_rto_region%2Fupgrade%3D0%2Fiso_rto_region%3DPJM%2F)
 
-https://data.openei.org/s3_viewer?bucket=oedi-data-lake&prefix=nrel-pds-building-stock%2Fend-use-load-profiles-for-us-building-stock%2F2023%2Fcomstock_amy2018_release_1%2Ftimeseries_aggregates%2Fby_iso_rto_region%2Fupgrade%3D0%2Fiso_rto_region%3DPJM%2F
+[Commercial | ComStock]:
+(oedi-data-lakenrel-pds-building-stockend-use-load-profiles-for-us-building-stock2023comstock_amy2018_release_1timeseries_aggregatesby_iso_rto_regionupgrade%3D0iso_rto_region%3DPJM)
 
 
-oedi-data-lakenrel-pds-building-stockend-use-load-profiles-for-us-building-stock2023comstock_amy2018_release_1timeseries_aggregatesby_iso_rto_regionupgrade%3D0iso_rto_region%3DPJM
-
-  ![residencial cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/residential_cluster.png) 
+  ![Residential cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/residential_cluster.png) 
 
 #### Generation (Solar Atlas)
 
-Supply (do 10, 30 and 50 of buses)
+Supply | Generation
 
-Solar https://globalsolaratlas.info/map (assuming 3kwp)
+Solar https://globalsolaratlas.info/map (assuming 3kWp)
 
   ![solar cluster](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/solar_cluster.png) 
 
@@ -75,7 +76,7 @@ https://www.nrel.gov/grid/solar-resource/renewable-resource-data.html
 
 https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
-#### network
+#### Network
 
 * CIGRE low voltage radial distribution network (44 bus system)
   
@@ -87,9 +88,9 @@ https://nrel.github.io/PyDSS/Extended%20controls%20library.html
 
   <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/80_network.png" alt="network_80" width="50%">
      
-## Trading pairs
  
 ### Matching process (double auction)
+
 The double auction mechanism is used to incorporate real-world constraints on both the demand and supply sides, whereas $D$ be the set of buy orders and $S$ be the set of sell orders in a P2P market:
 
 * Buy orders: $D = \{ (d_1, p^d_1, q^d_1), \ldots, (d_n, d^b_n, d^b_n) \}$ where each tuple represents a buy order with identifier $d_i$, a willing-to-pay price $p^d_i$, and a desired quantity $q^d_i$.
@@ -191,9 +192,19 @@ def run_optimization(net, B, adj_matrix, matches_hour):
     """
 ```
 
+
+  
+  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/newplot.png" alt="obg_gap" width="50%">
+
+## Output
+
+  <img src="https://raw.githubusercontent.com/d-vf/P2PEnergyTrading/main/Assets/p2pimpact_44_Times_New_Roman.png" alt="p2p_44" width="100%">
+
+  
+
 ## [Notebooks](implementation/)
 
-A. Demand and supply simulation 09_23.ipynb
+A. Demand and supply simulation 09_23.ipynb [here](implementation/Demand_and_supply_simulation_09_23.ipynb)
 
  * Description:  Simulates demand and supply patterns (using K-means clustering) for solar, residential, and commercial profiles.
 
