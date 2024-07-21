@@ -3,7 +3,7 @@
 ```{r}
 #pdf("~/Desktop/p2p_load_44.pdf", height=3, width=6)
 df <- read.csv("~/Desktop/slack_power_adjustments_p2p_trades_44.csv", header=TRUE) 
-#df <- read.csv("~/Desktop/slack_power_adjustments_p2p_trades.csv", header=TRUE) 
+#df <- read.csv("~/Desktop/slack_power_adjustments_p2p_trades_80.csv", header=TRUE) 
 ```
 
 
