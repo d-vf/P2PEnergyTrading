@@ -1,0 +1,77 @@
+
+
+```{r}
+#pdf("~/Desktop/p2p_load_44.pdf", height=3, width=6)
+df <- read.csv("~/Desktop/slack_power_adjustments_p2p_trades_44.csv", header=TRUE) 
+#df <- read.csv("~/Desktop/slack_power_adjustments_p2p_trades.csv", header=TRUE) 
+```
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+p <- ggplot(df, aes(x = Hour)) +
+  geom_area(aes(y = Inverted.Slack.Power.Adjustments, fill = "Slack power adjustment"), alpha = 0.5) +
+  geom_ribbon(aes(ymin = Inverted.Slack.Power.Adjustments, ymax = Total.Load..MWh., fill = "P2P trades"), alpha = 0.3) +
+  geom_line(aes(y = Inverted.Slack.Power.Adjustments), color = "deepskyblue4", size = 1) +  # Direct color specification
+  geom_line(aes(y = Total.Load..MWh., color = "Total Load (MWh)"), size = 1) +
+  scale_fill_manual(values = c("Slack power adjustment" = "deepskyblue3", "P2P trades" = "red")) +
+  scale_color_manual(values = c("Total Load (MWh)" = "azure4")) +
+  guides(color = guide_legend(override.aes = list(size = 1, color = "azure4"))) +
+  scale_x_continuous(breaks = c(0, 4, 8, 12, 16, 20)) +
+  labs(x = "Hour", y = "MWh") +
+  scale_y_continuous(name = "MWh", limits=c(0, max(df$Total.Load..MWh.)*1.1)) +
+  theme_bw(base_size = 24) +
+  theme(legend.position = "top", legend.title = element_blank(), text = element_text(family = "Times")) ## if I add this get "Error in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+#invalid font type" when saving as pdf
+
+# Display the plot
+print(p)
+
+```
+
+
+
+```{r}
+ggsave(filename = "p2pimpact_44.pdf", plot = p, width = 12, height = 6, dpi = 300)
+```
+
+```{r}
+library(tidyverse) 
+
+#Hour,Cluster_1,Cluster_0,Cluster_2
+df <- tibble(read.csv("~/Desktop/cluster_medians_solar.csv", header=TRUE)) %>%
+        rename("Cluster 0" = Cluster_0) %>%
+        rename("Cluster 1" = Cluster_1) %>%
+        rename("Cluster 2" = Cluster_2) %>%
+        pivot_longer(cols = !Hour)
+
+p <- ggplot(df, aes(Hour, value, color=name)) + geom_line(linewidth=1) + scale_y_continuous(name = "KWh") + scale_x_continuous(name="Hour of the day", breaks=c(0,4,8,12,16,20))+  theme_bw(base_size=16) + theme(legend.position = "top", legend.title=element_blank(),text = element_text(family = "Times") )+ scale_color_brewer(palette = "Set2") 
+# Display the plot
+#print(p)
+
+#pdf("solar_clusters.pdf", height=4,width=6)
+ggsave(filename = "solar_clusters.pdf", plot = p, width = 6, height = 4, dpi = 300)
+
+```
+
+```{r}
+library(tidyverse) 
+
+#Hour,Cluster_1,Cluster_0,Cluster_2
+df <- tibble(read.csv("~/Desktop/cluster_medians.csv", header=TRUE)) %>%
+        rename("Cluster 0" = Cluster_0) %>%
+        rename("Cluster 1" = Cluster_1) %>%
+        rename("Cluster 2" = Cluster_2) %>%
+        pivot_longer(cols = !Hour)
+
+p2 <- ggplot(df, aes(Hour, value, color=name)) + geom_line(linewidth=1) + scale_y_continuous(name = "KWh") + scale_x_continuous(name="Hour of the day", breaks=c(0,4,8,12,16,20))+  theme_bw(base_size=16) + theme(legend.position = "top", legend.title=element_blank(),text = element_text(family = "Times") )+ scale_color_brewer(palette = "Set2") 
+
+# Display the plot
+#print(p)
+
+#pdf("residential_clusters.pdf", height=4,width=6)
+ggsave(filename = "residential_clusters.pdf", plot = p2, width =6, height = 4, dpi = 300)
+```
+
