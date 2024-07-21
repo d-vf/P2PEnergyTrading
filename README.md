@@ -93,29 +93,29 @@ The quantities on each are adjusted at each bus $i$, ${g}_i$ (generation at bus 
 
 The matching process is described in the Algorithm "Matching_algo".
 
-1. D = set of buy orders {(d_1, p^d_1, q^d_1), ..., (d_n, p^d_n, q^d_n)}
-2. S = set of sell orders {(s_1, p^s_1, q^s_1), ..., (s_m, p^s_m, q^s_m)}
+1. D = set of buy orders $(d_1, p^d_1, q^d_1), ..., (d_n, p^d_n, q^d_n)$
+2. S = set of sell orders $(s_1, p^s_1, q^s_1), ..., (s_m, p^s_m, q^s_m)$
 3. T = empty set (to store matches)
 
-4. Sort D by increasing p^d (price offered by buyers)
-5. Sort S by decreasing p^s (price offered by sellers)
+4. Sort D by increasing $p^d$ (price offered by buyers)
+5. Sort S by decreasing $p^s$ (price offered by sellers)
 
 **Matching Loop:**
 
-6. For each buy order (d_i, p^d_i, q^d_i) in D:
-    * If q^d_i (quantity demanded by buyer) is already 0, skip to the next buy order.
-    * For each sell order (s_j, p^s_j, q^s_j) in S:
-        * Check if q^s_j (quantity offered by seller) is positive and p^d_i (buyer's price) is greater than or equal to p^s_j (seller's price).
+6. For each buy order $(d_i, p^d_i, q^d_i) \in D$:
+    * If $q^d_i$ (quantity demanded by buyer) is already 0, skip to the next buy order.
+    * For each sell order $(s_j, p^s_j, q^s_j) \in S$:
+        * Check if $q^s_j$ (quantity offered by seller) is positive and $p^d_i$ (buyer's price) is greater than or equal to $p^s_j$ (seller's price).
             * If conditions met:
-                * Calculate traded quantity q^m_ij as the minimum of q^d_i and q^s_j.
-                * Create a trade tuple t = (s_j, d_i, q^m_ij).
-                * Add t to the set of matches T.
+                * Calculate traded quantity $q^m_ij$ as the minimum of $q^d_i and q^s_j$.
+                * Create a trade tuple $t = (s_j, d_i, q^m_{ij})$. 
+                * Add $t$ to the set of matches $T$.
                 * Update remaining quantities:
-                    * q^d_i is reduced by q^m_ij.
-                    * q^s_j is reduced by q^m_ij.
-                    * If q^d_i becomes 0 after the trade, the buyer is satisfied, so move to the next buy order.
+                    * $q^d_i$ is reduced by $q^m_{ij}$.
+                    * $q^s_j$ is reduced by $q^m_{ij}$.
+                    * If $q^d_i$ becomes 0 after the trade, the buyer is satisfied, so move to the next buy order.
 
-7. Calculate total matched quantity Q_total by summing q^m_ij for all trades in T.
+7. Calculate the total matched quantity $Q_{Total}$ by summing $q^m_{ij}$ for all trades in $T$.
 
 
 A trade $t \in T$ is represented as $t = (s_t, d_t, q_t)$ where $s_t$ is the seller (source, matching $s_i$ in sell orders), $d_t$ is the buyer (destination, matching $d_i$ in buy orders), and $q_t$ is the quantity of the trade $t$. This ordering scheme simulates an optimal matching: the highest willing buyer is paired with the lowest willing seller. Each user's bid is capped by their respective load for the given time frame, while each ask is constrained by the available local generation. This ensures that the trading process accurately reflects the physical limitations of the energy system. 
