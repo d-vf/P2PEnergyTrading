@@ -1,6 +1,6 @@
 # P2P Energy Trading
 
- ![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/bids_bus_R.jpg)
+ ![Methods](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/bids_bus_R.jpg)
 
 This repository contains the code and data files for the article "Peer-to-Peer (P2P) Electricity Markets for Low Voltage Networks" by Diana Vieira Fernandes, Nicolas Christin, and Soummya Kar.
 
