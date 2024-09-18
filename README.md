@@ -6,7 +6,8 @@ This repository contains the code and data files for the article "Peer-to-Peer (
 
 Paper submitted and accepted to the 15th IEEE International Conference on Smart Grid Communications ([SmartGridComm 2024](https://sgc2024.ieee-smartgridcomm.org/about)). 
 
-Pre-print: [arXiv](https://arxiv.org/abs/2407.21403)
+Pre-print: [arXiv](https://arxiv.org/abs/2407.21403) | [slides](https://github.com/d-vf/P2PEnergyTrading/blob/main/Assets/SmartGridComm_2024_DVF.pdf)
+
 
 ## Libraries
 
